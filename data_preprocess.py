@@ -24,15 +24,13 @@ def preprocess_data(input_file, output_file, na_file):
 
     with open(input_file, 'r', encoding="utf-8") as f:
         for line in f.readlines():
-            data = re.sub(r'[\.\-]', '', line.strip().upper())
+            data = re.sub(r'[\.]', '', line.strip().upper())
             data = re.sub(r'[^A-Z]', ' ', data)
-            #data = re.sub(r'[\-]', '', data)
-            #data = ' '.join(x.strip('-') for x in data.split())
             if na_file:
-                data = ' '.join(x for x in data.split() if len(x) > 1 and x not in na_list)
+                data = ' '.join(x for x in data.split() if x not in na_list and len(x) > 1)
                 g.write(data + '\n')
             else:
-                data = ' '.join(x for x in data.split() if len(x) > 1)
+                data = ' '.join(x for x in data.split() and len(x) > 1)
                 g.write(data + '\n')
 
 
