@@ -27,7 +27,7 @@ def split_data_class(input_file, output_data, output_class, one_output):
     with open(input_file, 'r', encoding="utf-8") as f:
         for line in f.readlines():
             data = line.split('\t')
-            g.write(''.join.data[:-1] + '\n')
+            g.write(''.join(data[:-1]) + '\n')
             h.write(data[-1].strip() + '\n')
             if one_output:
                 e.write(''.join.data[:-1] + "\t" + data[-1].strip() + '\n')
