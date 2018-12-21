@@ -12,6 +12,7 @@ parser.add_argument('--output_file', dest="output_file", type=str, default="./da
 
 args = parser.parse_args()
 
+
 def data_verify(data_file, class_file, output_file):
     data_list = list(open(data_file, 'r', encoding="utf-8").readlines())
     class_list = list(open(class_file, 'r', encoding="utf-8").readlines())
@@ -49,8 +50,10 @@ def data_verify(data_file, class_file, output_file):
                 record += k + "\t" + str(data[i][k]) + "\t" + str(round(data[i][k]/total*100, 2)) + "%\t"
             f.write(str(total) + "\t" + record + "\n")
 
+
 def main():
     data_verify(args.data_file, args.class_file, args.output_file)
+
 
 if __name__ == '__main__':
     main()
