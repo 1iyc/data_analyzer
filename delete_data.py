@@ -8,17 +8,20 @@ parser = argparse.ArgumentParser(description="Data Name Clearing")
 parser.add_argument('--data_file', dest="data_file", type=str, default="./data/data.txt", help="Data File")
 parser.add_argument('--class_file', dest="class_file", type=str, default="./data/class.txt",
                     help="Class File")
-parser.add_argument('--output_file', dest="output_file", type=str, default="./data/data_static.txt", help="Output File")
+parser.add_argument('--code_file', dest="code_file", type=str, default="./data/code_list.txt",
+                    help="Delete Class not in Class File")
 
 args = parser.parse_args()
 
-def data_verify(data_file, class_file, output_file):
+def delete_white_data(data_file, class_file):
     data_list = list(open(data_file, 'r', encoding="utf-8").readlines())
     class_list = list(open(class_file, 'r', encoding="utf-8").readlines())
 
-    data = dict()
     total_data_count = len(data_list)
     count = 0
+
+    for i in range(total_data_count):
+
 
     print("Dictionary Making...")
     for i in range(len(data_list)):
@@ -50,7 +53,7 @@ def data_verify(data_file, class_file, output_file):
             f.write(str(total) + "\t" + record + "\n")
 
 def main():
-    data_verify(args.data_file, args.class_file, args.output_file)
+    delete_white_data(args.data_file, args.class_file)
 
 if __name__ == '__main__':
     main()

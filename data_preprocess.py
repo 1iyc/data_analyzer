@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(description="Pre-processing Data Name")
 # I&O file
 parser.add_argument('--input_file', dest="input_file", type=str, default="./data/data.txt", help="Data File")
 parser.add_argument('--class_file', dest="class_file", type=str, default="./data/class.txt", help="Class File")
+parser.add_argument('--code_file', dest='code_file', type=str, default='./data/code_list.txt', help="Code List File")
 
 # Pre-process Mode
 parser.add_argument('--DN', dest="DN", type=bool, default=False,
@@ -27,7 +28,7 @@ parser.add_argument('--NA', dest="NA", type=str, default=None,
 args = parser.parse_args()
 
 
-def pre_process_data(input_file, class_file, dn, ds, sc, dc, na_file):
+def pre_process_data(input_file, class_file, code_file, dn, ds, sc, dc, na_file):
     dir_path = os.path.dirname(os.path.realpath(input_file))
     folder_name = "Pre_Processed" + "_DN"*dn + "_DS"*ds + "_SC"*sc + "_DC"*dc + "_NA"*bool(na_file)
     output_path = os.path.join(dir_path, folder_name)
@@ -36,6 +37,7 @@ def pre_process_data(input_file, class_file, dn, ds, sc, dc, na_file):
 
     data_list = list(open(input_file, 'r', encoding="utf-8").readlines())
     class_list = list(open(class_file, 'r', encoding="utf-8").readlines())
+    code_list = list(open(code_file, 'r', encoding="utf-8").readlines())
 
     g = open(os.path.join(output_path, "data.txt"), 'w', encoding="utf-8")
     h = open(os.path.join(output_path, "class.txt"), 'w', encoding="utf-8")
@@ -52,6 +54,11 @@ def pre_process_data(input_file, class_file, dn, ds, sc, dc, na_file):
                 del data_list[i]
                 continue
         except ValueError:
+            del class_list[i]
+            del data_list[i]
+            continue
+
+        if class_list[i] not in code_list:
             del class_list[i]
             del data_list[i]
             continue
@@ -101,7 +108,7 @@ def main():
     if args.DN and args.DS:
         print("Select Either DN or DS")
         exit()
-    pre_process_data(args.input_file, args.class_file, args.DN, args.DS, args.SC, args.DC, args.NA)
+    pre_process_data(args.input_file, args.class_file, args.code_file, args.DN, args.DS, args.SC, args.DC, args.NA)
 
 
 if __name__ == '__main__':
