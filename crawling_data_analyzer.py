@@ -20,6 +20,8 @@ def crawling_data_analyze(data_file, output_file):
         for line in f:
             try:
                 line = line.strip().split("\t")
+                line[0] = line[0].strip()
+                line[0] = line[0].rstrip(" >>")
                 if line[0] in data:
                     if line[1] in data[line[0]]:
                         data[line[0]][line[1]] += 1

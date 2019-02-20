@@ -72,3 +72,9 @@ None
 ```
 
 ## extract_eval_data.py
+
+
+## About Crawling Data
+
+### crawling_data_analyzer.py
+Make statistic and arrange big data crawled
