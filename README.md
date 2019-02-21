@@ -78,3 +78,9 @@ None
 
 ### crawling_data_analyzer.py
 Make statistic and arrange big data crawled
+
+### crawling_statistic_data_to_train_data.py
+Make train data using statistic data
+```commandline
+130 item_name   291028
+```
