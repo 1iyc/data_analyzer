@@ -84,3 +84,8 @@ Make train data using statistic data
 ```commandline
 130 item_name   291028
 ```
+
+## Temp Module
+
+### del_column.py
+Delete column
