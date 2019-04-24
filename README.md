@@ -89,3 +89,6 @@ Make train data using statistic data
 
 ### del_column.py
 Delete column
+
+### seperate_data.py
+Make statistic data to csv
