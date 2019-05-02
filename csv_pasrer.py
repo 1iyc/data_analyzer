@@ -13,6 +13,7 @@ parser.add_argument('--one_output', dest="one_output", type=str, default=None, h
 
 args = parser.parse_args()
 
+
 def split_data_class(input_file, output_data, output_class, one_output):
     g = open(output_data, 'w', encoding="utf-8")
     h = open(output_class, 'w', encoding="utf-8")
