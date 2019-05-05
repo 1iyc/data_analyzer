@@ -4,6 +4,10 @@ Data Analyze before Train
 ## data_preprocess.py
 Delete Which Words or Characters
 
+## word_count.py
+
+Count words
+
 ### Default Function
 1. Replace Lower Case to Upper Case
 2. Replace "." to ''(None)
